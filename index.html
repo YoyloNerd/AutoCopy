@@ -1,1 +1,32 @@
-<h1>Hello!</h1>
+<body>
+    <h1>Hello!</h1>
+    <input type="text" id="myInput"/> <button onclick="getLink()">get link</button>
+    <script>
+        let mySearchParams = new URLSearchParams(window.location.search);
+        for (const [key, value] of mySearchParams) {
+            if (key == "copy") {
+                // Get the text field
+                var copyText = document.getElementById("myInput");
+                var input = document.getElementById("temp");
+
+                // Select the text field
+                copyText.select();
+                copyText.setSelectionRange(0, 99999); // For mobile devices
+
+                // Copy the text inside the text field
+                navigator.clipboard.writeText(value);
+                copyText.value = value;    
+                // Alert the copied text
+                alert("Copied the text: " + value);
+            }
+        }
+        function getLink() {
+            //generate link based on current url and input
+            var input = document.getElementById("myInput");
+            var url = window.location.href;
+            var newUrl = url + "?copy=" + input.value;
+
+            alert("Link: " + newUrl);
+        }
+    </script>
+</body>
