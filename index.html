@@ -1,13 +1,12 @@
 <body>
     <h1>Hello!</h1>
-    <input type="text" id="myInput"/> <button onclick="getLink()">get link</button>
+    <input type="text" id="myInput" /> <button onclick="getLink()">get link</button>
     <script>
         let mySearchParams = new URLSearchParams(window.location.search);
         for (const [key, value] of mySearchParams) {
             if (key == "copy") {
                 // Get the text field
                 var copyText = document.getElementById("myInput");
-                var input = document.getElementById("temp");
 
                 // Select the text field
                 copyText.select();
@@ -15,7 +14,7 @@
 
                 // Copy the text inside the text field
                 navigator.clipboard.writeText(value);
-                copyText.value = value;    
+                copyText.value = value;
                 // Alert the copied text
                 alert("Copied the text: " + value);
             }
@@ -26,7 +25,17 @@
             var url = window.location.href;
             var newUrl = url.split("?")[0] + "?copy=" + input.value;
 
-            alert("Link: " + newUrl);
+            // Get the text field
+            var copyText = document.getElementById("myInput");
+
+            // Select the text field
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // For mobile devices
+
+            // Copy the text inside the text field
+            navigator.clipboard.writeText(newUrl);
+
+            alert("Copied the text: " + newUrl);
         }
     </script>
 </body>
