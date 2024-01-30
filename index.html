@@ -1,6 +1,9 @@
 <body>
     <h1>Hello!</h1>
     <input type="text" id="myInput" /> <button onclick="getLink()">get link</button>
+    <br />
+    <h2>Text</h2>
+    <p id="fullText"></p>
     <script>
         let mySearchParams = new URLSearchParams(window.location.search);
         for (const [key, value] of mySearchParams) {
@@ -15,8 +18,10 @@
                 // Copy the text inside the text field
                 navigator.clipboard.writeText(value);
                 copyText.value = value;
-                // Alert the copied text
-                alert("Copied the text: " + value);
+                // // Alert the copied text
+                // alert("Copied the text: " + value);
+                var fullText = document.getElementById("fullText");
+                fullText.innerHTML = value;
             }
         }
         function getLink() {
