@@ -24,6 +24,7 @@
             var input = document.getElementById("myInput");
             var url = window.location.href;
             var newUrl = url.split("?")[0] + "?copy=" + input.value;
+            newUrl = newUrl.replace(/\s/g, "%20");
 
             // Get the text field
             var copyText = document.getElementById("myInput");
