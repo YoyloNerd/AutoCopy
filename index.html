@@ -2,13 +2,13 @@
     <h1>Hello!</h1>
     <input type="text" id="myInput" /> <button onclick="getLink()">get link</button>
     <br />
-    <h2>Text</h2>
-    <p id="fullText"></p>
     <script>
         let mySearchParams = new URLSearchParams(window.location.search);
         for (const [key, value] of mySearchParams) {
             if (key == "copy") {
                 // Get the text field
+                var body = document.getElementsByTagName("body")[0];
+                body.innerHTML = body.innerHTML + `<h2> Copied Text</h2><p id="fullText"></p>`;
                 var copyText = document.getElementById("myInput");
 
                 // Select the text field
